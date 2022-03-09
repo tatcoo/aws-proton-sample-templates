@@ -33,7 +33,7 @@ Resources:
       Cpu: !FindInMap [TaskSize, {{service_instance.inputs.task_size}}, cpu]
       Environment:
         - Name: INDEX_HTML_CONTENT
-          Value: 'I am running in {{service_instance.name}}'
+          Value: 'I am running in test'
       Memory: !FindInMap [TaskSize, {{service_instance.inputs.task_size}}, memory]
       NetworkMode: awsvpc
       RequiresCompatibilities:
