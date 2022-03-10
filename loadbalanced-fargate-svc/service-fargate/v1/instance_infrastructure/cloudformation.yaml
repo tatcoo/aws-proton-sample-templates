@@ -42,7 +42,7 @@ Resources:
           Cpu: !FindInMap [TaskSize, {{service_instance.inputs.task_size}}, cpu]
           Environment:
             - Name: INDEX_HTML_CONTENT
-              Value: '{{service_instance.inputs.indexhtmlcontent}}'
+              Value: 'I am resolving text issue'
           Memory: !FindInMap [TaskSize, {{service_instance.inputs.task_size}}, memory]
           Image: '{{service_instance.inputs.image}}'
           PortMappings:
