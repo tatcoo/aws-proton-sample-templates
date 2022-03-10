@@ -24,6 +24,28 @@ Resources:
     Properties:
       LogGroupName: '{{service.name}}/{{service_instance.name}}'
 
+  ECSTaskRole:
+      Type: AWS::IAM::Role
+      Properties:
+          AssumeRolePolicyDocument:
+              Statement:
+              - Effect: Allow
+                Principal:
+                   Service: [ecs-tasks.amazonaws.com]
+                Action: ['sts:AssumeRole']
+          Path: /
+          Policies:
+              - PolicyName: SSMMessagesPolicy
+                PolicyDocument:
+                  Statement:
+                      - Effect: Allow
+                        Action:
+                          - 'ssmmessages:CreateControlChannel'
+                          - 'ssmmessages:CreateDataChannel'
+                          - 'ssmmessages:OpenControlChannel'
+                          - 'ssmmessages:OpenDataChannel'
+                        Resource: '*'
+
   # The task definition. This is a simple metadata description of what
   # container to run, and what resource requirements it has.
   TaskDefinition:
